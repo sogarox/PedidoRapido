@@ -12,7 +12,7 @@
 <body>
 
 
-    <div class="main">
+    <form class="main">
         <div class="title-and-slogan">
             <h1>
                 RapiPedidos
@@ -26,11 +26,11 @@
             <p>Ingrese sus credenciales para acceder al panel administrativo.</p>
             <div class="input-field">
                 <p>CORREO ELECTRÓNICO</p>
-                <input type="email" placeholder="email@ejemplo.com">
+                <input type="email" placeholder="email@ejemplo.com" required>
             </div>
             <div class="input-field">
                 <p>CONTRASEÑA</p>
-                <input type="password" placeholder="*******">
+                <input type="password" placeholder="*******" required>
             </div>
             <button class="btn-submit">
                 Iniciar sesión
@@ -38,7 +38,8 @@
             <p>
                 No tiene una cuenta administrativa? <a href="../../index.html">Crear cuenta</a>
             </p>
-        </div>
+    </form>
 </body>
 <script src="login.js"></script>
+
 </html>

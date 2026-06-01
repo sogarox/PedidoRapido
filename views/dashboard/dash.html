@@ -8,124 +8,110 @@
 <link rel="stylesheet" href="dash.css">
 </head>
 <body>
-  <nav class="navbar">
-    <h1>RapiPedidos</h1>
-    <div class="nav-btns">
-      <button class="nav-btn">Editar Perfil</button>
-      <button class="nav-btn">Cerrar Sesión</button>
+<nav class="navbar">
+  <h1>RapiPedidos</h1>
+  <div class="nav-btns">
+    <button class="nav-btn btn-profile">Editar Perfil</button>
+    <button class="nav-btn btn-exit">Cerrar Sesión</button>
+  </div>
+</nav>
+ 
+<div class="content">
+  <div class="cards">
+    <div class="card" onclick="openModal()">
+      <i class="ti ti-shopping-cart"></i>
+      <h3>Registro de Pedido</h3>
+      <p>Ingresar nuevas órdenes de venta y servicios.</p>
     </div>
-  </nav>
-
-  <div class="content">
-    <div class="cards">
-      <div class="card">
-        <i class="ti ti-shopping-cart"></i>
-        <h3>Registro de Pedido</h3>
-        <p>Ingresar nuevas órdenes de venta y servicios.</p>
-      </div>
-      <div class="card">
-        <i class="ti ti-users"></i>
-        <h3>Historial de Clientes</h3>
-        <p>Consulta la base de datos y registros históricos.</p>
-      </div>
-      <div class="card">
-        <i class="ti ti-clipboard-list"></i>
-        <h3>Gestión de Productos</h3>
-        <p>Control de stock, precios y categorías de artículos.</p>
-      </div>
-      <div class="card">
-        <i class="ti ti-chart-bar"></i>
-        <h3>Resumen Diario</h3>
-        <p>Análisis de cierre de caja y estadísticas del día.</p>
-      </div>
+    <div class="card">
+      <i class="ti ti-users"></i>
+      <h3>Historial de Clientes</h3>
+      <p>Consulta la base de datos y registros históricos.</p>
     </div>
-
-    <div class="filters">
-      <div class="search-wrap">
-        <i class="ti ti-search"></i>
-        <input type="text" placeholder="Buscar pedidos por cliente...">
-      </div>
-      <select class="filter-select">
-        <option>Estado</option>
-        <option>Pendiente</option>
-        <option>En Proceso</option>
-        <option>Entregado</option>
-      </select>
-      <input type="date" class="filter-date">
-      <button class="btn-filter">Filtrar</button>
+    <div class="card">
+      <i class="ti ti-clipboard-list"></i>
+      <h3>Gestión de Productos</h3>
+      <p>Control de stock, precios y categorías de artículos.</p>
     </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>Cant. Productos</th>
-            <th>Total</th>
-            <th>Fecha y Hora</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="id">#12345</td>
-            <td>Alejandro Morales</td>
-            <td>5</td>
-            <td class="total">$1,240.00</td>
-            <td class="datetime">24 May 2024 · 10:30 AM</td>
-            <td><span class="badge badge-pending">PENDIENTE</span></td>
-            <td>
-              <div class="actions">
-                <select class="status-select"><option>Pendiente</option><option>En proceso</option><option>Entregado</option></select>
-                <button class="btn-detail">Detalles</button>
-                <button class="btn-del"><i class="ti ti-trash"></i></button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="id">#12346</td>
-            <td>Beatriz Ramos</td>
-            <td>2</td>
-            <td class="total">$450.50</td>
-            <td class="datetime">24 May 2024 · 09:15 AM</td>
-            <td><span class="badge badge-process">EN PROCESO</span></td>
-            <td>
-              <div class="actions">
-                <select class="status-select"><option>Pendiente</option><option selected>En proceso</option><option>Entregado</option></select>
-                <button class="btn-detail">Detalles</button>
-                <button class="btn-del"><i class="ti ti-trash"></i></button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="id">#12347</td>
-            <td>Carlos Pineda</td>
-            <td>12</td>
-            <td class="total">$3,890.00</td>
-            <td class="datetime">24 May 2024 · 08:45 AM</td>
-            <td><span class="badge badge-done">ENTREGADO</span></td>
-            <td>
-              <div class="actions">
-                <select class="status-select"><option>Pendiente</option><option>En proceso</option><option selected>Entregado</option></select>
-                <button class="btn-detail">Detalles</button>
-                <button class="btn-del"><i class="ti ti-trash"></i></button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="pagination">
-        <span>Mostrando 3 de 12 pedidos del día</span>
-        <div class="pages">
-          <button class="page-btn"><i class="ti ti-chevron-left"></i></button>
-          <button class="page-btn active">1</button>
-          <button class="page-btn">2</button>
-          <button class="page-btn"><i class="ti ti-chevron-right"></i></button>
-        </div>
-      </div>
+    <div class="card">
+      <i class="ti ti-chart-bar"></i>
+      <h3>Resumen Diario</h3>
+      <p>Análisis de cierre de caja y estadísticas del día.</p>
     </div>
   </div>
+ 
+  <div class="filters">
+    <div class="search-wrap">
+      <i class="ti ti-search"></i>
+      <input type="text" id="searchInput" placeholder="Buscar pedidos por cliente..." oninput="renderTable()">
+    </div>
+    <select class="filter-select" id="filterEstado" onchange="renderTable()">
+      <option value="">Estado</option>
+      <option>Pendiente</option>
+      <option>En proceso</option>
+      <option>Entregado</option>
+    </select>
+    <input type="date" class="filter-date" id="filterFecha" onchange="renderTable()">
+    <button class="btn-filter" onclick="clearFilters()">Limpiar</button>
+    <button class="btn-new" onclick="openModal()"><i class="ti ti-plus"></i> Nuevo Pedido</button>
+  </div>
+ 
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Cant. Productos</th>
+          <th>Total</th>
+          <th>Fecha y Hora</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <div class="pagination">
+      <span id="paginationInfo"></span>
+      <div class="pages" id="paginationBtns"></div>
+    </div>
+  </div>
+</div>
+ 
+<!-- MODAL NUEVO PEDIDO -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h3>Nuevo Pedido</h3>
+    <div class="modal-grid">
+      <div class="mfield">
+        <label>Cliente</label>
+        <input type="text" id="mCliente" placeholder="Nombre del cliente">
+      </div>
+      <div class="mfield">
+        <label>Cant. Productos</label>
+        <input type="number" id="mCant" placeholder="0" min="1">
+      </div>
+    </div>
+    <div class="modal-grid">
+      <div class="mfield">
+        <label>Total ($)</label>
+        <input type="number" id="mTotal" placeholder="0.00" step="0.01" min="0">
+      </div>
+      <div class="mfield">
+        <label>Estado</label>
+        <select id="mEstado">
+          <option>Pendiente</option>
+          <option>En proceso</option>
+          <option>Entregado</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+      <button class="btn-save" onclick="savePedido()">Guardar Pedido</button>
+    </div>
+  </div>
+</div>
+<script src="dash.js"></script>
 </body>
 </html>

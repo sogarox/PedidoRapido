@@ -89,14 +89,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // botón de registrar: evitar navegación y guardar
     const submitBtn = document.querySelector('.btn-submit');
-    if (submitBtn) {
+    const form = document.querySelector('.main'); // el <form class="main">
+    if (submitBtn && form) {
         submitBtn.addEventListener('click', (e) => {
             e.preventDefault();
+
+            // valida todos los campos requeridos del form
+            if (!form.checkValidity()) {
+                // muestra los mensajes de validación nativos del navegador
+                form.reportValidity();
+                return; // no continuar si hay campos inválidos
+            }
+
+            // todo válido -> guardar y navegar
             dataGetter();
-            // acción extra: puedes mostrar mensaje o redirigir
             console.log('Datos guardados en localStorage:', localStorage.getItem(STORAGE_KEY));
-            location.href = "../dashboard/dash.html"
+            location.href = "../dashboard/dash.html";
         });
     }
 });
+
 // ...existing code...

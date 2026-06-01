@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="main">
+        <form class="main" aria-required="true">
             <h2>Crear Cuenta de Encargado</h2>
             <p class="sub">Complete la información para registrar su establecimiento.</p>
 
@@ -37,11 +37,11 @@
             <div class="row row-2">
                 <div class="field">
                     <label>Nombre completo</label>
-                    <input type="text" placeholder="Ej. Juan Pérez">
+                    <input type="text" placeholder="Ej. Juan Pérez" required>
                 </div>
                 <div class="field">
                     <label>Cédula / ID</label>
-                    <input type="text" placeholder="0-0000-0000">
+                    <input type="text" placeholder="0-0000-0000" required>
                 </div>
             </div>
 
@@ -60,18 +60,18 @@
             <div class="row row-2">
                 <div class="field">
                     <label>Nombre de la tienda</label>
-                    <input type="text" placeholder="Nombre comercial">
+                    <input type="text" placeholder="Nombre comercial" required>
                 </div>
                 <div class="field">
                     <label>Correo electrónico</label>
-                    <input type="email" placeholder="tienda@ejemplo.com">
+                    <input type="email" placeholder="tienda@ejemplo.com" required>
                 </div>
             </div>
 
             <div class="row" style="margin-bottom:12px;">
                 <div class="field">
                     <label>Dirección física</label>
-                    <input type="text" placeholder="Calle, Número, Ciudad">
+                    <input type="text" placeholder="Calle, Número, Ciudad" required>
                 </div>
             </div>
 
@@ -81,14 +81,14 @@
 
                     <div class="input-prefix">
                         <span>+57</span>
-                        <input type="tel" placeholder="0000-0000">
+                        <input type="tel" placeholder="0000-0000" required>
                     </div>
                 </div>
                 <div class="field">
                     <label>Contraseña</label>
                     <div class="input-pwd">
                         <i class="ti ti-lock" aria-hidden="true"></i>
-                        <input type="password" placeholder="••••••••">
+                        <input type="password" placeholder="••••••••" required>
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@
             <button class="btn-submit">Registrar Establecimiento <i class="ti ti-arrow-right"
                     aria-hidden="true"></i></button>
             <p class="login-link">¿Ya tienes una cuenta? <a href="views/login/login.html">Inicia Sesión</a></p>
-        </div>
+            </form>
     </div>
 </body>
 <script src="index.js">
