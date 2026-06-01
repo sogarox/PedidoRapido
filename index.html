@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="wrap">
+        <div class="sidebar">
+            <div>
+                <h1>RapiPedidos</h1>
+                <p>Potencie su negocio con una gestión centralizada, segura y profesional. Comience su transformación
+                    digital hoy mismo.</p>
+                <div class="feature"><i class="ti ti-shield-check" aria-hidden="true"></i><span>Seguridad de grado
+                        bancario</span></div>
+                <div class="feature"><i class="ti ti-report-analytics" aria-hidden="true"></i><span>Reportes en tiempo
+                        real</span></div>
+                <div class="feature"><i class="ti ti-cloud" aria-hidden="true"></i><span>Sincronización en la
+                        nube</span></div>
+            </div>
+            <div class="screen-img">
+                <img src="media/statsPholder.png" alt="" width="100%" height="100%" style="border-radius: 8px;">
+            </div>
+        </div>
+
+        <div class="main">
+            <h2>Crear Cuenta de Encargado</h2>
+            <p class="sub">Complete la información para registrar su establecimiento.</p>
+
+            <div class="section-label">Información del propietario</div>
+            <div class="row row-2">
+                <div class="field">
+                    <label>Nombre completo</label>
+                    <input type="text" placeholder="Ej. Juan Pérez">
+                </div>
+                <div class="field">
+                    <label>Cédula / ID</label>
+                    <input type="text" placeholder="0-0000-0000">
+                </div>
+            </div>
+
+            <div class="section-label">Detalles de la tienda</div>
+            <div class="field" style="margin-bottom:12px;">
+                <label>Logo de la tienda</label>
+                <div class="upload-box">
+                    <i class="ti ti-photo-up" aria-hidden="true"></i>
+                    <div class="upload-text">
+                        <p>Subir imagen</p>
+                        <span>PNG, JPG hasta 5MB</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-2">
+                <div class="field">
+                    <label>Nombre de la tienda</label>
+                    <input type="text" placeholder="Nombre comercial">
+                </div>
+                <div class="field">
+                    <label>Correo electrónico</label>
+                    <input type="email" placeholder="tienda@ejemplo.com">
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom:12px;">
+                <div class="field">
+                    <label>Dirección física</label>
+                    <input type="text" placeholder="Calle, Número, Ciudad">
+                </div>
+            </div>
+
+            <div class="row row-2">
+                <div class="field">
+                    <label>Teléfono</label>
+
+                    <div class="input-prefix">
+                        <span>+57</span>
+                        <input type="tel" placeholder="0000-0000">
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Contraseña</label>
+                    <div class="input-pwd">
+                        <i class="ti ti-lock" aria-hidden="true"></i>
+                        <input type="password" placeholder="••••••••">
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-submit">Registrar Establecimiento <i class="ti ti-arrow-right"
+                    aria-hidden="true"></i></button>
+            <p class="login-link">¿Ya tienes una cuenta? <a href="views/login/login.html">Inicia Sesión</a></p>
+        </div>
+    </div>
+</body>
+<script src="index.js">
+</script>
+
+</html>
