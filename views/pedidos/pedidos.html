@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RapiPedidos - Registro de Pedido</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="pedidos.css">
+<link rel="stylesheet" href="../../app.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <h1>RapiPedidos</h1>
+  <button class="nav-btn btn-exit">Cerrar Sesión</button>
+</nav>
+
+<a href="../dashboard/dash.html" class="back-link">
+  <i class="ti ti-arrow-left"></i> Volver al Panel de Control
+</a>
+
+<div class="main">
+  <!-- INFO CLIENTE -->
+  <div class="card">
+    <div class="card-title">Registro de Nuevo Pedido</div>
+    <div class="card-sub">Complete la información requerida para procesar el pedido del cliente.</div>
+
+    <div class="form-grid">
+      <div class="field"><label>Nombre completo</label><input type="text" id="clienteNombre" placeholder="Ej. Juan Pérez"></div>
+      <div class="field"><label>Correo electrónico</label><input type="email" id="clienteCorreo" placeholder="juan@ejemplo.com"></div>
+    </div>
+    <div class="form-grid">
+      <div class="field"><label>Teléfono</label><input type="tel" id="clienteTelefono" placeholder="+34 000 000 000"></div>
+      <div class="field"><label>Dirección de entrega <span style="color:#dc2626">(Obligatorio)</span></label><input type="text" id="clienteDireccion" placeholder="Calle, Número, Ciudad"></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- SELECCIÓN DE PRODUCTOS -->
+    <div class="section-title">Selección de Productos</div>
+    <div class="search-row">
+      <div class="search-wrap">
+        <i class="ti ti-search"></i>
+        <input type="text" id="productSearch" placeholder="Buscar producto" oninput="renderProductos()">
+      </div>
+    </div>
+
+    <table class="prod-table">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Descripción</th>
+          <th>Stock</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody id="prodTableBody"></tbody>
+    </table>
+    <div class="prod-pagination" id="prodPagination"></div>
+
+    <hr class="divider">
+
+    <!-- PRODUCTOS AÑADIDOS -->
+    <div class="section-title">Productos Añadidos</div>
+    <table class="added-table">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody id="addedTableBody"></tbody>
+    </table>
+
+    <div class="form-actions">
+      <button class="btn-cancel" onclick="location.href='../dashboard/dash.html'">Cancelar</button>
+      <button class="btn-confirm" onclick="confirmarPedido()">
+        <i class="ti ti-circle-check"></i> Confirmar Pedido
+      </button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-brand">RapiPedidos System</span>
+  <div class="footer-links">
+    <a href="#">Privacidad</a>
+    <a href="#">Términos</a>
+    <a href="#">Soporte</a>
+    <a href="#">Contacto</a>
+  </div>
+  <span class="footer-copy">© 2024 RapiPedidos System. Todos los derechos reservados.</span>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="pedidos.js">
+
+</script>
+</body>
+</html>

@@ -6,6 +6,7 @@
 <title>RapiPedidos - Panel de Control</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <link rel="stylesheet" href="dash.css">
+<link rel="stylesheet" href="../../app.css">
 </head>
 <body>
 <nav class="navbar">
@@ -18,12 +19,12 @@
  
 <div class="content">
   <div class="cards">
-    <div class="card" onclick="openModal()">
+    <div class="card" onclick="location.href='../pedidos/pedidos.html'">
       <i class="ti ti-shopping-cart"></i>
       <h3>Registro de Pedido</h3>
       <p>Ingresar nuevas órdenes de venta y servicios.</p>
     </div>
-    <div class="card">
+    <div class="card" onclick="location.href='../historial/historial.html'">
       <i class="ti ti-users"></i>
       <h3>Historial de Clientes</h3>
       <p>Consulta la base de datos y registros históricos.</p>
@@ -53,7 +54,7 @@
     </select>
     <input type="date" class="filter-date" id="filterFecha" onchange="renderTable()">
     <button class="btn-filter" onclick="clearFilters()">Limpiar</button>
-    <button class="btn-new" onclick="openModal()"><i class="ti ti-plus"></i> Nuevo Pedido</button>
+    <button class="btn-new" onclick="location.href='../pedidos/pedidos.html'"><i class="ti ti-plus"></i> Nuevo Pedido</button>
   </div>
  
   <div class="table-wrap">
@@ -78,37 +79,61 @@
   </div>
 </div>
  
-<!-- MODAL NUEVO PEDIDO -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <h3>Nuevo Pedido</h3>
+<div class="modal-overlay" id="modalPerfil">
+  <div class="modal" style="max-width:560px;">
+    <h3>Editar Perfil de la Tienda</h3>
+    <button class="modal-close" onclick="closeModalPerfil()">×</button>
+
+    <div class="modal-section-label"><i class="ti ti-user"></i> INFORMACIÓN DEL PROPIETARIO</div>
     <div class="modal-grid">
       <div class="mfield">
-        <label>Cliente</label>
-        <input type="text" id="mCliente" placeholder="Nombre del cliente">
+        <label>Nombre completo</label>
+        <input type="text" id="pNombre" placeholder="Tu nombre">
       </div>
       <div class="mfield">
-        <label>Cant. Productos</label>
-        <input type="number" id="mCant" placeholder="0" min="1">
+        <label>Cédula / ID</label>
+        <input type="text" id="pCedula" placeholder="0-0000-0000">
+      </div>
+    </div>
+
+    <hr class="modal-divider">
+
+    <div class="modal-section-label"><i class="ti ti-calendar"></i> DETALLES DEL ESTABLECIMIENTO</div>
+    <div class="mfield" style="margin-bottom:12px;">
+      <label>Logo de la tienda</label>
+      <div class="upload-box">
+        <i class="ti ti-photo-up"></i>
+        <div><p style="font-size:13px;font-weight:500;">Subir imagen</p><span style="font-size:11px;color:#6b7280;">PNG, JPG hasta 5MB</span></div>
       </div>
     </div>
     <div class="modal-grid">
       <div class="mfield">
-        <label>Total ($)</label>
-        <input type="number" id="mTotal" placeholder="0.00" step="0.01" min="0">
+        <label>Nombre de la tienda</label>
+        <input type="text" id="pTienda" placeholder="Nombre comercial">
       </div>
       <div class="mfield">
-        <label>Estado</label>
-        <select id="mEstado">
-          <option>Pendiente</option>
-          <option>En proceso</option>
-          <option>Entregado</option>
-        </select>
+        <label>Correo electrónico</label>
+        <input type="email" id="pCorreo" placeholder="tienda@ejemplo.com">
       </div>
     </div>
+    <div class="mfield" style="margin-bottom:12px;">
+      <label>Dirección física</label>
+      <input type="text" id="pDireccion" placeholder="Calle, Número, Ciudad">
+    </div>
+    <div class="modal-grid">
+      <div class="mfield">
+        <label>Teléfono</label>
+        <input type="tel" id="pTelefono" placeholder="+506 0000-0000">
+      </div>
+      <div class="mfield">
+        <label>Contraseña segura</label>
+        <input type="password" id="pPassword" placeholder="••••••••">
+      </div>
+    </div>
+
     <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
-      <button class="btn-save" onclick="savePedido()">Guardar Pedido</button>
+      <button class="btn-cancel" onclick="closeModalPerfil()">Cancelar</button>
+      <button class="btn-save" onclick="saveProfile()">Guardar Cambios <i class="ti ti-circle-check"></i></button>
     </div>
   </div>
 </div>

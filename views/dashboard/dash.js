@@ -1,4 +1,5 @@
 const STORAGE_KEY = 'rapipedidos_pedidos';
+const PROFILE_KEY = 'rapipedidos_perfil';
 const PER_PAGE = 10;
 let currentPage = 1;
 
@@ -125,54 +126,12 @@ function clearFilters() {
 }
 
 // ── Modal ──
-function openModal() {
-    document.getElementById('modalOverlay').classList.add('open');
-}
-
-function closeModal() {
-    document.getElementById('modalOverlay').classList.remove('open');
-    document.getElementById('mCliente').value = '';
-    document.getElementById('mCant').value = '';
-    document.getElementById('mTotal').value = '';
-    document.getElementById('mEstado').value = 'Pendiente';
-}
-
-function savePedido() {
-    const cliente = document.getElementById('mCliente').value.trim();
-    const cant = parseInt(document.getElementById('mCant').value);
-    const total = parseFloat(document.getElementById('mTotal').value);
-    const estado = document.getElementById('mEstado').value;
-
-    if (!cliente || isNaN(cant) || isNaN(total)) {
-        alert('Por favor complete todos los campos.');
-        return;
-    }
-
-    const pedidos = getPedidos();
-    pedidos.unshift({
-        id: nextId(),
-        cliente,
-        cant,
-        total,
-        fecha: new Date().toISOString().slice(0, 16),
-        estado
-    });
-    savePedidos(pedidos);
-    closeModal();
-    currentPage = 1;
-    renderTable();
-}
-
-// Cerrar modal al clickear fuera
-document.getElementById('modalOverlay').addEventListener('click', function (e) {
-    if (e.target === this) closeModal();
-});
 
 const exitBtn = document.querySelector('.btn-exit');
     if (exitBtn) {
         exitBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // acción extra: puedes mostrar mensaje o redirigir
+
             localStorage.removeItem(STORAGE_KEY)
             console.log('Sesión eliminada de localStorage:', localStorage.getItem(STORAGE_KEY));
             location.href = "../../index.html"
@@ -181,12 +140,48 @@ const exitBtn = document.querySelector('.btn-exit');
 
 
     const profileBtn = document.querySelector(".btn-profile");
-    if(profileBtn) {
-        profileBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            location.href="../perfil/perfil.html"
-        })
-    }
+if (profileBtn) {
+    profileBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModalPerfil(); 
+    });
+}
+
+
+
+
+function openModalPerfil() {
+    const perfil = JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}');
+    document.getElementById('pNombre').value    = perfil.nombre    || '';
+    document.getElementById('pCedula').value    = perfil.cedula    || '';
+    document.getElementById('pTienda').value    = perfil.tienda    || '';
+    document.getElementById('pCorreo').value    = perfil.correo    || '';
+    document.getElementById('pDireccion').value = perfil.direccion || '';
+    document.getElementById('pTelefono').value  = perfil.telefono  || '';
+    document.getElementById('modalPerfil').classList.add('open');
+}
+
+function closeModalPerfil() {
+    document.getElementById('modalPerfil').classList.remove('open');
+}
+
+function saveProfile() {
+    const perfil = {
+        nombre:    document.getElementById('pNombre').value.trim(),
+        cedula:    document.getElementById('pCedula').value.trim(),
+        tienda:    document.getElementById('pTienda').value.trim(),
+        correo:    document.getElementById('pCorreo').value.trim(),
+        direccion: document.getElementById('pDireccion').value.trim(),
+        telefono:  document.getElementById('pTelefono').value.trim(),
+    };
+    localStorage.setItem(PROFILE_KEY, JSON.stringify(perfil));
+    closeModalPerfil();
+}
+
+
+document.getElementById('modalPerfil').addEventListener('click', function(e) {
+    if (e.target === this) closeModalPerfil();
+});
 // ── Init ──
 if (!localStorage.getItem(STORAGE_KEY)) savePedidos(defaultData);
 renderTable();

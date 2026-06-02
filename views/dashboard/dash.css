@@ -10,41 +10,7 @@
     min-height: 100vh;
   }
 
-  .navbar {
-    background: #1a5c3a;
-    padding: 0 1.5rem;
-    height: 52px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
 
-  .navbar h1 {
-    color: #fff;
-    font-size: 18px;
-    font-weight: 700;
-  }
-
-  .nav-btns {
-    display: flex;
-    gap: 8px;
-  }
-
-  .nav-btn {
-    height: 32px;
-    padding: 0 14px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    border: 1.5px solid rgba(255, 255, 255, .5);
-    background: transparent;
-    color: #fff;
-  }
-
-  .nav-btn:hover {
-    background: rgba(255, 255, 255, .1);
-  }
 
   .content {
     padding: 1.25rem 1.5rem;
@@ -495,3 +461,45 @@
   .btn-save:hover {
     background: #155030;
   }
+
+  .modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #6b7280;
+  cursor: pointer;
+  line-height: 1;
+}
+.modal-close:hover { color: #111; }
+.modal { position: relative; } 
+
+.modal-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  color: #6b7280;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.modal-divider {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 1rem 0;
+}
+.upload-box {
+  border: 1.5px dashed #e5e7eb;
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+.upload-box i { font-size: 22px; color: #1a5c3a; }
+.upload-box:hover { border-color: #1a5c3a; background: #f0faf4; }
