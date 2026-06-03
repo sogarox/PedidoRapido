@@ -5,9 +5,9 @@ let currentPage = 1;
 
 // ── Datos iniciales si LocalStorage está vacío ──
 const defaultData = [
-    { id: 12345, cliente: 'Alejandro Morales', cant: 5, total: 1240.00, fecha: '2024-05-24T10:30', estado: 'Pendiente' },
-    { id: 12346, cliente: 'Beatriz Ramos', cant: 2, total: 450.50, fecha: '2024-05-24T09:15', estado: 'En proceso' },
-    { id: 12347, cliente: 'Carlos Pineda', cant: 12, total: 3890.00, fecha: '2024-05-24T08:45', estado: 'Entregado' },
+    { id: 12345, cliente: 'Alejandro Morales', cant: 5, total: 1240.00, fecha: '2026-05-24T10:30', estado: 'Pendiente' },
+    { id: 12346, cliente: 'Beatriz Ramos', cant: 2, total: 450.50, fecha: '2026-05-24T09:15', estado: 'En proceso' },
+    { id: 12347, cliente: 'Carlos Pineda', cant: 12, total: 3890.00, fecha: '2026-05-24T08:45', estado: 'Entregado' },
 ];
 
 function getPedidos() {

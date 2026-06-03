@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RapiPedidos - Gestión de Productos</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="gestion.css">
+<link rel="stylesheet" href="../../app.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <h1>RapiPedidos</h1>
+  <button class="nav-btn btn-exit">Cerrar Sesión</button>
+</nav>
+
+<div class="main">
+  <a href="../dashboard/dash.html" class="back-link"><i class="ti ti-arrow-left"></i> Volver al Panel de Control</a>
+  <div class="page-title">Gestión de Productos</div>
+
+  <div class="layout">
+    <!-- FORM -->
+    <div class="form-panel">
+      <div class="form-panel-title"><i class="ti ti-plus"></i> <span id="formTitle">Nuevo Producto</span></div>
+
+      <div class="upload-box" id="uploadBox">
+        <i class="ti ti-photo-up"></i>
+        <span>Click o arrastra para subir</span>
+        <input type="file" accept="image/*" id="imgInput" onchange="previewImg(this)">
+        <img class="upload-preview" id="imgPreview" alt="preview">
+      </div>
+
+      <div class="field"><label>Nombre</label><input type="text" id="fNombre" placeholder="Ej: Café Orgánico"></div>
+      <div class="field"><label>Descripción corta</label><textarea id="fDesc" placeholder="Breve detalle del producto..."></textarea></div>
+      <div class="field-row">
+        <div class="field" style="margin:0"><label>Precio ($)</label><input type="number" id="fPrecio" placeholder="0.00" step="0.01" min="0"></div>
+        <div class="field" style="margin:0"><label>Stock Inicial</label><input type="number" id="fStock" placeholder="Cant." min="0"></div>
+      </div>
+      <input type="hidden" id="editingId">
+      <button class="btn-save" onclick="guardarProducto()"><i class="ti ti-device-floppy"></i> <span id="btnLabel">Guardar Producto</span></button>
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-panel">
+      <div class="table-top">
+        <div class="table-top-left">Productos registrados</div>
+        <div class="table-top-right">
+          <div class="search-wrap">
+            <i class="ti ti-search"></i>
+            <input type="text" id="searchInput" placeholder="Buscar por nombre..." oninput="render()">
+          </div>
+          <div class="items-badge" id="itemsBadge">0 items</div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-brand">RapiPedidos System</span>
+  <span class="footer-copy">© 2024 RapiPedidos System. Todos los derechos reservados.</span>
+  <div class="footer-links">
+    <a href="#">Privacidad</a><a href="#">Términos</a><a href="#">Soporte</a><a href="#">Contacto</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="gestion.js"></script>
+</body>
+</html>

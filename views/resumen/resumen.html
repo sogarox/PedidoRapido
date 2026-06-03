@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RapiPedidos - Resumen Diario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="../../app.css">
+    <link rel="stylesheet" href="resumen.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h1>RapiPedidos</h1>
+        <button class="nav-btn btn-exit">Cerrar Sesión</button>
+    </nav>
+
+    <div class="topbar">
+        <a href="../dashboard/dash.html" class="back-link"><i class="ti ti-arrow-left"></i> Volver al Panel de
+            Control</a>
+        <div class="topbar-actions">
+            <input type="date" class="date-input" id="fechaFiltro">
+            <button class="btn-export" onclick="exportar('csv')"><i class="ti ti-download"></i> Exportar CSV</button>
+            <button class="btn-export" onclick="exportar('txt')"><i class="ti ti-download"></i> Exportar TXT</button>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-label">Total de ganancias recolectadas en el día</div>
+                <div class="stat-value" id="statGanancias">$0.00</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Cantidad de productos vendidos en el día</div>
+                <div class="stat-value" id="statProductos">0</div>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <div class="table-header">
+                <h2>Detalle de Pedidos Entregados</h2>
+                <span id="tableInfo">Mostrando 0 de 0</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Pedido</th>
+                        <th>Cliente</th>
+                        <th>Productos</th>
+                        <th>Dirección de Entrega</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="resumenBody"></tbody>
+            </table>
+            <div class="pagination">
+                <span class="pagination-info" id="pagInfo"></span>
+                <div class="pages" id="pagBtns"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span class="footer-brand">RapiPedidos System</span>
+        <div class="footer-links">
+            <a href="#">Privacidad</a><a href="#">Términos</a><a href="#">Soporte</a><a href="#">Contacto</a>
+        </div>
+        <span class="footer-copy">© 2024 RapiPedidos System. Todos los derechos reservados.</span>
+    </footer>
+</body>
+<script src="resumen.js"></script>
+</html>
