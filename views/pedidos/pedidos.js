@@ -58,7 +58,7 @@ function renderProductos() {
     const disabled  = p.stock === 0 || enCarrito ? 'disabled' : '';
     return `
       <tr>
-        <td><div class="prod-img">${p.emoji}</div></td>
+        <td><div class="prod-img">📦</div></td>
         <td class="prod-name">${p.nombre}</td>
         <td class="prod-price">$${p.precio.toFixed(2)}</td>
         <td class="prod-desc">${p.descripcion}</td>
